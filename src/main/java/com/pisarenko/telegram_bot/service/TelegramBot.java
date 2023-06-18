@@ -50,10 +50,10 @@ public class TelegramBot extends TelegramLongPollingBot {
     @SneakyThrows
     @Override
     public void onRegister() {
-        SendMessage entity = new SendMessage();
+/*        SendMessage entity = new SendMessage();
         entity.setText("START WORKING ON " + LocalDateTime.now().atZone(ZoneId.of("Europe/Moscow")));
         entity.setChatId("917631670");
-        execute(entity);
+        execute(entity);*/
 
     }
 }
