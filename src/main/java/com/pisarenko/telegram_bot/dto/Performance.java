@@ -1,15 +1,17 @@
 package com.pisarenko.telegram_bot.dto;
 
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+import jakarta.persistence.Column;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import lombok.Data;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
+@Data
 @Table(name = "performance")
 public class Performance {
 
@@ -24,7 +26,7 @@ public class Performance {
 
     @OneToOne
     @JoinColumn(name = "data")
-    private Data data;
+    private PerformanceData data;
 
     @Column(nullable = false, name = "gust_id")
     @OneToMany(mappedBy = "performance")
