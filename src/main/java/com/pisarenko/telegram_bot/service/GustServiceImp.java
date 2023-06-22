@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class GustServiceImp implements GustService {
 
-    private GustDAO gustDAO;
+    private final GustDAO gustDAO;
 
     @Autowired
     public GustServiceImp(GustDAO gustDAO) {

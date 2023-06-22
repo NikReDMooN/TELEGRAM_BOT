@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class PerformanceServiceDao implements PerformanceService{
 
-    private PerformanceDao performanceDao;
+    private final PerformanceDao performanceDao;
 
     @Autowired
     public PerformanceServiceDao(PerformanceDao performanceDao) {

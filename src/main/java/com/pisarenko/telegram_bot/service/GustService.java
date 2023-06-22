@@ -4,6 +4,6 @@ import com.pisarenko.telegram_bot.dto.Gust;
 
 public interface GustService {
 
-    public void addGust (Gust gust);
+    void addGust (Gust gust);
 
 }
