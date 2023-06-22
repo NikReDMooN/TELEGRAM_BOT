@@ -1,34 +1,31 @@
 package com.pisarenko.telegram_bot.dto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Id;
-import jakarta.persistence.Column;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.Data;
+
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Data
 @Table(name = "performance")
-public class Performance {
+public class Performance implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "count_of_seats", columnDefinition = "int default 30", nullable = false)
+    @Column(name = "count_of_seats", insertable = false, nullable = false, columnDefinition = "INT DEFAULT 30")
     private Integer CountOfSeats;
 
-    @Column(nullable = false)
+    @Column()
     private String name;
 
-    @OneToOne
-    @JoinColumn(name = "data")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name ="performance_data", referencedColumnName = "data")
     private PerformanceData data;
 
-    @Column(nullable = false, name = "gust_id")
+    @Column(name = "gust_id")
     @OneToMany(mappedBy = "performance")
     private List<Gust> gusts;
 

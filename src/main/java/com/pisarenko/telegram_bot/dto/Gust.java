@@ -8,14 +8,16 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Entity
 @Data
 @Table(name = "gust")
-public class Gust {
+public class Gust implements Serializable {
 
     @Id
     @Column
-    private Long id;
+    private String id;
 
     @ManyToOne
     @JoinColumn(name = "performance_id")

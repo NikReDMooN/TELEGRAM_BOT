@@ -7,18 +7,19 @@ import jakarta.persistence.Column;
 import jakarta.persistence.OneToOne;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 @Entity
 @Data
 @Table(name = "PerformanceData")
-public class PerformanceData {
+public class PerformanceData implements Serializable {
 
     @Id
-    @Column(nullable = false)
+    @Column
     private Timestamp data;
 
-    @OneToOne
+    @OneToOne(mappedBy = "data")
     private Performance performance;
 
 }
