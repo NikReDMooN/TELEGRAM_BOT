@@ -93,15 +93,9 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     public void doCommand(Message message, String command) {
         switch (command) {
-            case "/reserve_a_seat":
-                reserve_a_seat(message);
-                break;
-            case "/delete_a_seat":
-                deleteASeat(message);
-                break;
-            case "/new":
-                sendNews(message);
-                break;
+            case "/reserve_a_seat" -> reserve_a_seat(message);
+            case "/delete_a_seat" -> deleteASeat(message);
+            case "/new" -> sendNews(message);
         }
     }
 
