@@ -47,5 +47,5 @@ public class PerformanceServiceImp implements PerformanceService{
     @Transactional
     public Performance getPerformanceByName(String name) {
         return performanceDao.getPerformanceByName(name);
-    };
+    }
 }

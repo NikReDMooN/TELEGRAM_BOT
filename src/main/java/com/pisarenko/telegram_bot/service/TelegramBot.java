@@ -58,7 +58,6 @@ public class TelegramBot extends TelegramLongPollingBot {
         if (update.getCallbackQuery() != null) handleCallBackQuery(update.getCallbackQuery());
     }
 
-    //TODO доделай бронирование места, 100% гарантия, что место есть
     @SneakyThrows
     public void handleCallBackQuery(CallbackQuery callbackQuery) {
         SendMessage message = new SendMessage();
@@ -100,7 +99,6 @@ public class TelegramBot extends TelegramLongPollingBot {
     }
 
 
-    //TODO проверяй, что место не было забронировано ранее
     @SneakyThrows
     public void reserve_a_seat(Message message)  {
 
