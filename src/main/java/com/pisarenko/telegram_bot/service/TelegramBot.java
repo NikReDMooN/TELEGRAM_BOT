@@ -96,7 +96,27 @@ public class TelegramBot extends TelegramLongPollingBot {
             case "/reserve_a_seat" -> reserve_a_seat(message);
             case "/delete_a_seat" -> deleteASeat(message);
             case "/new" -> sendNews(message);
+            case "/clarify_the_reservation" -> clarifyTheReservation(message);
         }
+    }
+
+    @SneakyThrows
+    public void clarifyTheReservation (Message message) {
+        Gust gust = gustService.getGust(message.getFrom().getId().toString());
+
+        SendMessage sendMessage = new SendMessage();
+        sendMessage.setChatId(message.getChatId().toString());
+
+        if (gust == null) {
+            sendMessage.setText("у вас нет на данный момент забронированного места :(");
+            execute(sendMessage);
+            return;
+        }
+
+        sendMessage.setText(gust.getPerformance().getName() + "\n" +
+                gust.getPerformance().getData().writeData());
+
+        execute(sendMessage);
     }
 
     public void sendNews(Message message) {
@@ -106,10 +126,19 @@ public class TelegramBot extends TelegramLongPollingBot {
     @SneakyThrows
     public void deleteASeat(Message message) {
        var id = message.getFrom().getId();
+
+        SendMessage sendMessage = new SendMessage();
+        sendMessage.setChatId(message.getChatId().toString());
+
+       var gust = gustService.getGust(id.toString());
+       if (gust == null) {
+           sendMessage.setText("у вас нет сейчас забронированных мест");
+           execute(sendMessage);
+           return;
+       }
+
        gustService.deleteGust(id.toString());
 
-       SendMessage sendMessage = new SendMessage();
-       sendMessage.setChatId(message.getChatId().toString());
        sendMessage.setText("Ваша бронь успешно отменина :)");
        execute(sendMessage);
     }
