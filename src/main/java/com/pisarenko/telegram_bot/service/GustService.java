@@ -8,4 +8,6 @@ public interface GustService {
 
     Gust getGust (String id);
 
+    void deleteGust(String id);
+
 }

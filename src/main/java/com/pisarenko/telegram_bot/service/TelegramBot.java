@@ -95,7 +95,29 @@ public class TelegramBot extends TelegramLongPollingBot {
         switch (command) {
             case "/reserve_a_seat":
                 reserve_a_seat(message);
+                break;
+            case "/delete_a_seat":
+                deleteASeat(message);
+                break;
+            case "/new":
+                sendNews(message);
+                break;
         }
+    }
+
+    public void sendNews(Message message) {
+
+    }
+
+    @SneakyThrows
+    public void deleteASeat(Message message) {
+       var id = message.getFrom().getId();
+       gustService.deleteGust(id.toString());
+
+       SendMessage sendMessage = new SendMessage();
+       sendMessage.setChatId(message.getChatId().toString());
+       sendMessage.setText("Ваша бронь успешно отменина :)");
+       execute(sendMessage);
     }
 
 

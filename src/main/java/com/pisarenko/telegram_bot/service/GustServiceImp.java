@@ -27,4 +27,10 @@ public class GustServiceImp implements GustService {
     public Gust getGust(String id) {
         return gustDAO.getGust(id);
     }
+
+    @Override
+    @Transactional
+    public void deleteGust(String id) {
+        gustDAO.deleteGust(id);
+    }
 }

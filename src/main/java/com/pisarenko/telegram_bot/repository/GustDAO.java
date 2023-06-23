@@ -8,4 +8,6 @@ public interface GustDAO {
 
     Gust getGust (String id);
 
+    void deleteGust(String id);
+
 }
