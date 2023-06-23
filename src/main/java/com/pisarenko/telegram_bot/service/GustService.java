@@ -6,4 +6,6 @@ public interface GustService {
 
     void addGust (Gust gust);
 
+    Gust getGust (String id);
+
 }

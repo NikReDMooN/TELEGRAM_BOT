@@ -2,12 +2,17 @@ package com.pisarenko.telegram_bot.dto;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 @Table(name = "performance")
 public class Performance implements Serializable {
 
@@ -28,6 +33,5 @@ public class Performance implements Serializable {
     @Column(name = "gust_id")
     @OneToMany(mappedBy = "performance")
     private List<Gust> gusts;
-
 
 }

@@ -17,11 +17,15 @@ import java.time.LocalDateTime;
 @Component
 public class TestFunctional {
 
-    @Autowired
-    public PerformanceService performanceService;
+    public final PerformanceService performanceService;
+
+    public final GustService gustService;
 
     @Autowired
-    public GustService gustService;
+    public TestFunctional(PerformanceService performanceService, GustService gustService) {
+        this.performanceService = performanceService;
+        this.gustService = gustService;
+    }
 
 
     @EventListener(ApplicationReadyEvent.class)
@@ -59,8 +63,50 @@ public class TestFunctional {
         gustService.addGust(gust2);
         performanceService.addGust(performancefuture, gust1);
         performanceService.addGust(performancefuture, gust2);
+        Performance test1 = new Performance();
+        PerformanceData testData = new PerformanceData();
+        testData.setData(Timestamp.valueOf(tommorow.atTime(2,2)));
+        test1.setData(testData);
+        testData = new PerformanceData();
+        testData.setData(Timestamp.valueOf(tommorow.atTime(3,3)));
+        Performance test2 = new Performance();
+        test2.setData(testData);
+        test1.setName("GUMLET");
+        test2.setName("PISARENKO GENIUS");
+        performanceService.addPerformance(test2);
+        performanceService.addPerformance(test1);
 
 
+        Performance performanceNoseats = new Performance();
+        performanceNoseats.setName("WAR AND PEACE");
+        performanceNoseats.setCountOfSeats(0);
+        PerformanceData data1 = new PerformanceData();
+        data1.setData(Timestamp.valueOf(tommorow.atTime(5,5)));
+        performanceNoseats.setData(data1);
+        Performance performanceNoseatsWithGusts = new Performance();
+        PerformanceData data2 = new PerformanceData();
+        data2.setData(Timestamp.valueOf(tommorow.atTime(6,6)));
+        performanceNoseatsWithGusts.setData(data2);
+        performanceNoseatsWithGusts.setName("NORWEGIAN WOOD");
+        performanceNoseatsWithGusts.setCountOfSeats(0);
+        Gust gust = new Gust();
+        gust.setId("NIKITA");
+        Gust gust3 = new Gust();
+        gust3.setId("VLAS");
+        gustService.addGust(gust);
+        gustService.addGust(gust3);
+        performanceService.addPerformance(performanceNoseats);
+        performanceService.addPerformance(performanceNoseatsWithGusts);
+        performanceService.addGust(performanceNoseatsWithGusts, gust);
+        performanceService.addGust(performanceNoseatsWithGusts, gust3);
+
+        for (int i = 0; i < 28; i++) {
+            Gust gust4 = new Gust();
+            gust4.setId("" + i);
+            gust4.setPerformance(performanceNoseatsWithGusts);
+            gustService.addGust(gust4);
+            performanceService.addGust(performanceNoseatsWithGusts, gust4);
+        }
 
     }
 }

@@ -21,4 +21,10 @@ public class GustServiceImp implements GustService {
     public void addGust(Gust gust) {
         gustDAO.addGust(gust);
     }
+
+    @Override
+    @Transactional
+    public Gust getGust(String id) {
+        return gustDAO.getGust(id);
+    }
 }

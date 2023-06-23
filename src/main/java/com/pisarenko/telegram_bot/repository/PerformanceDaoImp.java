@@ -40,4 +40,20 @@ public class PerformanceDaoImp implements PerformanceDao {
             }
         }
     }
+
+    @Override
+    public List<Performance> getAllPerformances() {
+        Query query = entityManager.createQuery("Select p From Performance p " +
+                "LEFT JOIN PerformanceData d ON p.data = d " +
+                "LEFT JOIN FETCH p.gusts WHERE p.id = p.id and p.CountOfSeats > 0");
+        return query.getResultList();
+    }
+
+    @Override
+    public Performance getPerformanceByName(String name) {
+        Query query = entityManager.createQuery("Select p FROM  Performance p " +
+                "WHERE p.name = :performancename ");
+        query.setParameter("performancename",name);
+        return (Performance) query.getResultList().get(0);
+    }
 }

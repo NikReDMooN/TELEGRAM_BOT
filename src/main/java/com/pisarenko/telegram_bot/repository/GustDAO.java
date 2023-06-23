@@ -6,4 +6,6 @@ public interface GustDAO {
 
     void addGust (Gust gust);
 
+    Gust getGust (String id);
+
 }

@@ -7,13 +7,15 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
-public class PerformanceServiceDao implements PerformanceService{
+public class PerformanceServiceImp implements PerformanceService{
 
     private final PerformanceDao performanceDao;
 
     @Autowired
-    public PerformanceServiceDao(PerformanceDao performanceDao) {
+    public PerformanceServiceImp(PerformanceDao performanceDao) {
         this.performanceDao = performanceDao;
     }
 
@@ -35,4 +37,15 @@ public class PerformanceServiceDao implements PerformanceService{
         performanceDao.deleteOldPerformance();
     }
 
+    @Override
+    @Transactional
+    public List<Performance> getAllPerformances() {
+        return performanceDao.getAllPerformances();
+    }
+
+    @Override
+    @Transactional
+    public Performance getPerformanceByName(String name) {
+        return performanceDao.getPerformanceByName(name);
+    };
 }

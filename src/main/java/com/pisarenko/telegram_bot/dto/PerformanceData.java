@@ -6,12 +6,17 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Column;
 import jakarta.persistence.OneToOne;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
 
 @Entity
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 @Table(name = "PerformanceData")
 public class PerformanceData implements Serializable {
 
@@ -21,5 +26,9 @@ public class PerformanceData implements Serializable {
 
     @OneToOne(mappedBy = "data")
     private Performance performance;
+
+    public String writeData() {
+        return data.toString();
+    }
 
 }
