@@ -4,7 +4,6 @@ import com.pisarenko.telegram_bot.dto.Performance;
 import com.pisarenko.telegram_bot.dto.PerformanceData;
 import lombok.Getter;
 import lombok.SneakyThrows;
-import org.hibernate.annotations.Comment;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -18,9 +17,11 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.*;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Optional;
+import java.util.Date;
+import java.util.List;
 
 
 @Component

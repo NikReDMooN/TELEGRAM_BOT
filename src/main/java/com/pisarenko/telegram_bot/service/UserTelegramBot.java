@@ -93,7 +93,6 @@ public class UserTelegramBot extends TelegramLongPollingBot {
         switch (command) {
             case "/reserve_a_seat" -> reserve_a_seat(message);
             case "/delete_a_seat" -> deleteASeat(message);
-            case "/new" -> sendNews(message);
             case "/clarify_the_reservation" -> clarifyTheReservation(message);
         }
     }
@@ -115,10 +114,6 @@ public class UserTelegramBot extends TelegramLongPollingBot {
                 gust.getPerformance().getData().writeData());
 
         execute(sendMessage);
-    }
-
-    public void sendNews(Message message) {
-
     }
 
     @SneakyThrows
