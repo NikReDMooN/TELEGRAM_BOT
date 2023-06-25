@@ -4,6 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.PropertySource;
 
+
+//TODO сделай реализацию main бота путем создания наследника от user и переопредели метод docommand
 @SpringBootApplication
 @PropertySource("classpath:telegram.properties")
 public class TelegramBotApplication {

@@ -24,9 +24,7 @@ import java.util.Optional;
 
 @Getter
 @Component
-public class TelegramBot extends TelegramLongPollingBot {
-
-    private final SendMessage response = new SendMessage();
+public class UserTelegramBot extends TelegramLongPollingBot {
 
     private final String botUsername;
     private final String botToken;
@@ -36,10 +34,10 @@ public class TelegramBot extends TelegramLongPollingBot {
     private final GustService gustService;
 
     @Autowired
-    public TelegramBot(
+    public UserTelegramBot(
             TelegramBotsApi telegramBotsApi,
-            @Value("${telegram-bot.name}") String botUsername,
-            @Value("${telegram-bot.token}") String botToken,
+            @Value("${telegram-bot-test.name}") String botUsername,
+            @Value("${telegram-bot-test.token}") String botToken,
             @Value(("${generated-key}")) String generatedKey,
             PerformanceService performanceService, GustService gustService) throws TelegramApiException {
         this.performanceService = performanceService;

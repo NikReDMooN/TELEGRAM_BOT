@@ -108,5 +108,14 @@ public class TestFunctional {
             performanceService.addGust(performanceNoseatsWithGusts, gust4);
         }
 
+        performance = new Performance();
+        data = new PerformanceData();
+        LocalDate today = currentTime.toLocalDate();
+        data.setData(Timestamp.valueOf(today.atTime(1,1)));
+        performance.setData(data);
+        performance.setName("I NEED TO BE DELETED");
+
+        performanceService.addPerformance(performance);
+
     }
 }
