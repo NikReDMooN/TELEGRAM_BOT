@@ -23,7 +23,6 @@ import java.time.ZoneId;
 import java.util.*;
 
 
-//TODO сделай добавление нового представления через HashMap - сначала имя представления, потом дата
 @Component
 @Getter
 public class AdminTelegramBot extends TelegramLongPollingBot {
@@ -75,7 +74,7 @@ public class AdminTelegramBot extends TelegramLongPollingBot {
 
     public void handleMessage (Message message) {
 
-        //TODO подумай как тебе сделать обработку сообщений подряд, тут ты должен его перехватить
+      //TODO - оптимизируй работу с id, чтобы постоянно его не вытаскивать
         if (message.hasText() &&  previousMessageById.containsKey(message.getFrom().getId())
                 && previousMessageById.get(message.getFrom().getId()).getText().equals("/create_a_performance")) {
             doCommand(message, "/create_a_performance");
@@ -119,7 +118,7 @@ public class AdminTelegramBot extends TelegramLongPollingBot {
         if (previousMessageById.containsKey(message.getFrom().getId())
                 && previousMessageById.get(message.getFrom().getId()) != null
                 && previousMessageById.get(message.getFrom().getId()).getText().equals("/create_a_performance")) {
-            //TODO допиши тут парс прошлого сообщения и в случае чего кидай ощибку
+
             String text = message.getText();
             String[] parts = text.split("\n");
 
