@@ -1,7 +1,7 @@
 package com.pisarenko.telegram_bot.service;
 
-import com.pisarenko.telegram_bot.dto.Performance;
-import com.pisarenko.telegram_bot.dto.PerformanceData;
+import com.pisarenko.telegram_bot.entity.Performance;
+import com.pisarenko.telegram_bot.entity.PerformanceData;
 import lombok.Getter;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Value;

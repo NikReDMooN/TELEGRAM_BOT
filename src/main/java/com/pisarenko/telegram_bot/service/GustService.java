@@ -1,6 +1,6 @@
 package com.pisarenko.telegram_bot.service;
 
-import com.pisarenko.telegram_bot.dto.Gust;
+import com.pisarenko.telegram_bot.entity.Gust;
 
 public interface GustService {
 

@@ -1,15 +1,6 @@
-package com.pisarenko.telegram_bot.dto;
+package com.pisarenko.telegram_bot.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
+import jakarta.persistence.*;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,8 +23,9 @@ public class Performance implements Serializable {
     @Column(name = "count_of_seats", insertable = false, nullable = false, columnDefinition = "INT DEFAULT 30")
     private Integer CountOfSeats;
 
-    @Column()
-    private String name;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "performance_name", referencedColumnName = "name")
+    private Play name;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name ="performance_data", referencedColumnName = "data")

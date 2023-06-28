@@ -1,4 +1,4 @@
-package com.pisarenko.telegram_bot.dto;
+package com.pisarenko.telegram_bot.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

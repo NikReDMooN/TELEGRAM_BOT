@@ -1,8 +1,8 @@
 package com.pisarenko.telegram_bot.config;
 
-import com.pisarenko.telegram_bot.dto.Gust;
-import com.pisarenko.telegram_bot.dto.Performance;
-import com.pisarenko.telegram_bot.dto.PerformanceData;
+import com.pisarenko.telegram_bot.entity.Gust;
+import com.pisarenko.telegram_bot.entity.Performance;
+import com.pisarenko.telegram_bot.entity.PerformanceData;
 import com.pisarenko.telegram_bot.service.GustService;
 import com.pisarenko.telegram_bot.service.PerformanceService;
 import org.springframework.beans.factory.annotation.Autowired;

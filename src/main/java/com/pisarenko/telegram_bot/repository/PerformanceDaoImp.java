@@ -1,7 +1,7 @@
 package com.pisarenko.telegram_bot.repository;
 
-import com.pisarenko.telegram_bot.dto.Gust;
-import com.pisarenko.telegram_bot.dto.Performance;
+import com.pisarenko.telegram_bot.entity.Gust;
+import com.pisarenko.telegram_bot.entity.Performance;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
